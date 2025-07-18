@@ -32,6 +32,8 @@
     {"$GMObjectProperty":"v1","%Name":"directionTolerance","filters":[],"listItems":[],"multiselect":false,"name":"directionTolerance","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"3","varType":0,},
     {"$GMObjectProperty":"v1","%Name":"crossTolerance","filters":[],"listItems":[],"multiselect":false,"name":"crossTolerance","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0.1","varType":0,},
     {"$GMObjectProperty":"v1","%Name":"stallSpeed","filters":[],"listItems":[],"multiselect":false,"name":"stallSpeed","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"1","varType":0,},
+    {"$GMObjectProperty":"v1","%Name":"HP","filters":[],"listItems":[],"multiselect":false,"name":"HP","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"10","varType":0,},
+    {"$GMObjectProperty":"v1","%Name":"drag","filters":[],"listItems":[],"multiselect":false,"name":"drag","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"1","varType":0,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
