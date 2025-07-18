@@ -1,0 +1,1 @@
+if (throttle < array_length(thrustCurve) - 1) throttle++

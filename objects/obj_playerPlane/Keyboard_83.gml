@@ -1,0 +1,1 @@
+if (throttle > 0) throttle--
