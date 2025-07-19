@@ -43,6 +43,7 @@
     {"id":{"name":"obj_projectile","path":"objects/obj_projectile/obj_projectile.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"id":{"name":"scr_curves","path":"scripts/scr_curves/scr_curves.yy",},},
+    {"id":{"name":"scr_enemyBehaviors","path":"scripts/scr_enemyBehaviors/scr_enemyBehaviors.yy",},},
     {"id":{"name":"spr_1","path":"sprites/spr_1/spr_1.yy",},},
     {"id":{"name":"spr_2","path":"sprites/spr_2/spr_2.yy",},},
     {"id":{"name":"spr_bullet","path":"sprites/spr_bullet/spr_bullet.yy",},},

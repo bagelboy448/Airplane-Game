@@ -1,6 +1,5 @@
-if (object_exists(obj_playerPlane)) {
-	aimPoint = {
-		x: obj_playerPlane.x,
-		y: obj_playerPlane.y
-	}
+if (instance_exists(global.player)) {
+    target = global.player
 }
+
+behavior = "flanker"

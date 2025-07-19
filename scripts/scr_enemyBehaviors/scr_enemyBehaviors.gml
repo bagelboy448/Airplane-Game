@@ -1,0 +1,1 @@
+global.behaviors = ["chaser", "flanker"]
