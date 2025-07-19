@@ -27,14 +27,16 @@ if (target != noone && instance_exists(target)) {
 		case "flanker":
 			var px = chaseDistance * dcos(target.direction + 135) + target.x
 			var py = chaseDistance * -dsin(target.direction + 135) + target.y
+			var pointDistance = point_distance(x, y, px, py)
 			aimDir = point_direction(x, y, px, py)
-			if (speed < target.speed + 1 && point_distance(x, y, px, py) > 1.25 * chaseDistance && throttle < 100) {
-				throttle ++
+			if (speed < target.speed + 2 && pointDistance > 1.1 * chaseDistance && throttle < 100) {
+				throttle += 0.5 + clamp(chaseDistance / pointDistance, 0, 2)
 			}
-			else if (speed > target.speed && point_distance(x, y, px, py) < 0.75 * chaseDistance && throttle > 0) {
-				throttle -= 0.5
+			else if (speed > target.speed && pointDistance < 0.9 * chaseDistance && throttle > 0) {
+				throttle -= 0.5 + clamp(chaseDistance / pointDistance, 0, 2)
 			}
 	        break
+			
 	    default:
 	        break
 	}
@@ -71,7 +73,7 @@ image_angle = direction
 
 #region acceleration
 
-throttle = clamp(throttle, 0, 100)
+throttle = clamp(throttle, 0, array_length(thrustCurve) - 1)
 thrust = maxThrust * thrustCurve[throttle]
 drag = dragCoefficient * speed * speed
 

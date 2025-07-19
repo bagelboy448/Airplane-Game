@@ -1,5 +1,6 @@
 image_angle = direction
 
+throttle = clamp(throttle, 0, array_length(thrustCurve) - 1)
 thrust = maxThrust * thrustCurve[throttle]
 drag = dragCoefficient * sqr(speed)
 

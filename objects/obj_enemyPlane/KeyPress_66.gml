@@ -1,0 +1,1 @@
+behavior = global.behaviors[irandom(array_length(global.behaviors) - 1)]
