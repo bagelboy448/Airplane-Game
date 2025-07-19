@@ -1,0 +1,1 @@
+maxSpeed = 6

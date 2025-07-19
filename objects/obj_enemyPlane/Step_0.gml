@@ -1,26 +1,59 @@
-if (object_exists(obj_playerPlane)) {
-	aimPoint = {
-		x: obj_playerPlane.x,
-		y: obj_playerPlane.y
+//var crossZ = dcos(direction) * dsin(aimDir) - dsin(direction) * dcos(aimDir)
+
+if (instance_exists(obj_playerPlane)) {
+    aimDir = point_direction(x, y, obj_playerPlane.x, obj_playerPlane.y)
+	if (speed < obj_playerPlane.speed + 3 && throttle < 100) {
+		throttle++
+	}
+	else if (throttle > 0) {
+		throttle--
 	}
 }
 
-if (speed < maxSpeed) {
-    speed += thrust
-}
 
-if (aimPoint != undefined) {
-	var aimDir = point_direction(x, y, aimPoint.x, aimPoint.y)
+#region turning
+
+var dotProduct = dcos(direction) * dcos(aimDir) + dsin(direction) * dsin(aimDir)
+
+if (dotProduct + aimTolerance < 1) {
+	
+	var upper = ceil(speed)
+	var lower = floor(speed)
+	var percentage = speed - lower
+	turnRate = maxTurnRate * lerp(turnRateCurve[lower], turnRateCurve[upper], percentage)
+	
 	var crossZ = dcos(direction) * dsin(aimDir) - dsin(direction) * dcos(aimDir)
-
-	if (crossZ - crossTolerance > 0) direction += turnForce
-	else if (crossZ + crossTolerance < 0) direction -= turnForce
-	else if (abs(direction - aimDir) < 180 + directionTolerance && abs(direction - aimDir) > 180 - directionTolerance) {
-		if (irandom(1) == 1)
-			direction += turnForce
-		else
-			direction -= turnForce
+	if (crossZ < 0) {
+	    direction -= turnRate
 	}
+	else 
+		direction += turnRate
+	
+	turning = true
+	
 }
 
-event_inherited()
+image_angle = direction
+
+#endregion
+
+#region acceleration
+
+thrust = maxThrust * thrustCurve[throttle]
+drag = dragCoefficient * speed * speed
+
+if (turning) {
+    turnSlowdown += dragCoefficient
+	turnSlowdown = clamp(turnSlowdown, 0, drag)
+    drag += turnSlowdown
+	turning = false
+}
+else if (turnSlowdown > 0)
+	turnSlowdown = 0
+	
+acceleration = thrust - drag
+speed += acceleration
+if (speed < 0) speed = 0
+
+#endregion
+

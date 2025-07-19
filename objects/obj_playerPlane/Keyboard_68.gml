@@ -1,2 +1,2 @@
-direction -= turnForce
-speed -= drag * sqr(speed)
+direction -= turnRate
+turning = true

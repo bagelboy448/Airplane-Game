@@ -1,1 +1,1 @@
-speed -= brakingForce
+acceleration -= brakingForce
