@@ -1,1 +1,1 @@
-if (throttle < array_length(thrustCurve) - 1) throttle++
+if (throttle < array_length(thrustCurve) - 1  && flightMode != "vtol") throttle++

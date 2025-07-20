@@ -1,0 +1,1 @@
+timers[? "vtolTransitionTime"].timer = vtolTransitionTime

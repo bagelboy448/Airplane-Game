@@ -1,1 +1,1 @@
-if (throttle > 0) throttle--
+if (throttle > 0 && flightMode != "vtol") throttle--
