@@ -11,6 +11,8 @@ for (var i = 0; i < array_length(timerKeys); ++i) {
 
 throttle = clamp(throttle, 0, array_length(thrustCurve) - 1)
 
+#region flight modes
+
 switch (flightMode) {
     case "standard":
 	default:
@@ -69,7 +71,7 @@ switch (flightMode) {
 
 }
 
-
+#endregion
 
 #region STALLING
 
@@ -85,8 +87,49 @@ switch (flightMode) {
 
 #endregion
 
-//var exactSpeed = speed
+// exactSpeed = speed
 var upper = ceil(speed)
 var lower = floor(speed)
 var percentage = speed - lower
-turnRate = maxTurnRate * lerp(turnRateCurve[lower], turnRateCurve[upper], percentage)
+turnRate = maxTurnRate * lerp(turnRateCurve[lower], turnRateCurve[upper], percentage) // can potentially go out of range
+
+#region weapons
+
+for (var i = 0; i < array_length(weapons); ++i) {
+	
+	if (weapons[i].loading && weaponTimers[? weapons[i]].loadTimer > 0) {
+	    weaponTimers[? weapons[i]].loadTimer--
+	}
+	else if (weapons[i].loading && weaponTimers[? weapons[i]].loadTimer == 0 && weapons[i].magazine < weapons[i].magazineCapacity) {
+		weapons[i].magazine++
+		weaponTimers[? weapons[i]].loadTimer = weapons[i].loadingDelay
+		
+		audio_play_sound(weapons[i].loadingSound, 0, false)
+	}
+	
+	if (weaponTimers[? weapons[i]].fireTimer > 0) {
+		weaponTimers[? weapons[i]].fireTimer--
+	}
+	else if (mouse_check_button(mb_left)) {
+		weaponTimers[? weapons[i]].fireTimer = weapons[i].fireDelay
+
+		instance_create_depth(x, y, depth - 1, weapons[i].projectile, {
+			sprite_index: weapons[i].projectileSprite,
+			speed: weapons[i].projectileSpeed + (speed * dcos(image_angle - direction)),
+			direction: image_angle + (random(weapons[i].projectileSpread) * choose(1, -1)),
+			image_angle: image_angle,
+			damage: weapons[i].projectileDamage,
+			damageSpeedMultiplier: weapons[i].damageSpeedMultiplier,
+			duration: weapons[i].projectileDuration
+		})
+		
+		if (weapons[i].loading) {
+		    weapons[i].magazine--
+			weaponTimers[? weapons[i]].loadTimer = weapons[i].loadingDelay
+		}
+		
+		audio_play_sound(weapons[i].fireSound, 0, false)
+	}
+}
+
+#endregion

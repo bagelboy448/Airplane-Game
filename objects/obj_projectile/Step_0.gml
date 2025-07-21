@@ -1,10 +1,10 @@
 if (place_meeting(x, y, obj_enemyPlane)) {
-    instance_place(x, y, obj_enemyPlane).HP -= damage
+    instance_place(x, y, obj_enemyPlane).HP -= damage + (speed * speed * damageSpeedMultiplier)
 	instance_destroy()
 }
 
-if (lifetime > 0) {
-    lifetime--
+if (duration > 0) {
+    duration--
 }
 else {
     instance_destroy()

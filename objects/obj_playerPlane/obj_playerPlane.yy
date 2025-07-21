@@ -56,7 +56,7 @@
     {"$GMObjectProperty":"v1","%Name":"maxTurnRate","filters":[],"listItems":[],"multiselect":false,"name":"maxTurnRate","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"4","varType":4,},
     {"$GMObjectProperty":"v1","%Name":"flightMode","filters":[],"listItems":[],"multiselect":false,"name":"flightMode","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"standard","varType":2,},
     {"$GMObjectProperty":"v1","%Name":"vtolMaxThrust","filters":[],"listItems":[],"multiselect":false,"name":"vtolMaxThrust","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0.5","varType":0,},
-    {"$GMObjectProperty":"v1","%Name":"vtolTransitionTime","filters":[],"listItems":[],"multiselect":false,"name":"vtolTransitionTime","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"180","varType":0,},
+    {"$GMObjectProperty":"v1","%Name":"vtolTransitionTime","filters":[],"listItems":[],"multiselect":false,"name":"vtolTransitionTime","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"60","varType":0,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

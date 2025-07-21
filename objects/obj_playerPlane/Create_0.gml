@@ -16,6 +16,17 @@ timers[? "vtolTransitionTime"] = {
 		}
 		else {
 		    _id.flightMode = "standard"
+			_id.direction = _id.image_angle
 		}
+	}
+}
+
+weapons = [ global.gatlingGun ]
+weaponTimers = ds_map_create()
+
+for (var i = 0; i < array_length(weapons); ++i) {
+	weaponTimers[? weapons[i]] = {
+	    loadTimer: 0,
+		fireTimer: 0
 	}
 }

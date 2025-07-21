@@ -45,6 +45,7 @@
     {"$GMObjectProperty":"v1","%Name":"target","filters":[],"listItems":[],"multiselect":false,"name":"target","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"noone","varType":4,},
     {"$GMObjectProperty":"v1","%Name":"behavior","filters":[],"listItems":[],"multiselect":false,"name":"behavior","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"\"undefined\"","varType":2,},
     {"$GMObjectProperty":"v1","%Name":"chaseDistance","filters":[],"listItems":[],"multiselect":false,"name":"chaseDistance","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"250","varType":0,},
+    {"$GMObjectProperty":"v1","%Name":"HP","filters":[],"listItems":[],"multiselect":false,"name":"HP","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"10","varType":0,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

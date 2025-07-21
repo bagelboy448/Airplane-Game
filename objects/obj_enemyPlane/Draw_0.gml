@@ -5,6 +5,7 @@ draw_text(x, y - 35, behavior)
 draw_text(x, y + 15, "distance " + string(point_distance(x, y, target.x, target.y)))
 draw_text(x, y + 30, "throttle " + string(throttle))
 draw_text(x, y + 45, "speed " + string(speed))
+draw_text(x, y + 60, "HP " + string(HP))
 
 if (behavior == "flanker") {
 	var px = chaseDistance * dcos(target.direction + 135) + target.x
