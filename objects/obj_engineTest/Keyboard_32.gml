@@ -1,1 +1,1 @@
-mainShaft.RPM++
+mainShaft.RPM += (60 / 6.283) * 500 / mainShaft.I

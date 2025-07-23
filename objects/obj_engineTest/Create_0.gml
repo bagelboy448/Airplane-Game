@@ -5,8 +5,8 @@ T0 = 288.15
 V0 = 0
 
 gamma = 1.4
-maxFuelFlowRate = 4
-fuelHeatingValue = 10000
+maxFuelFlowRate = 10
+fuelHeatingValue = 40000000
 
 inlet = {
     efficiency: 1,
@@ -28,7 +28,7 @@ burner = {
 
 turbine = {
     efficiency: 1,
-	TPR: 0.9,
+	TPR: 0.5,
 	workCreated: undefined
 }
 
@@ -46,3 +46,11 @@ mainShaft = {
 gradientSurface = undefined
 maskSurface = undefined
 
+thrustARR = []
+fuelFlowRateARR = []
+RPMARR = []
+CWorkARR = []
+TWorkARR = []
+NetWorkARR = []
+
+//arrs = [ thrustARR, fuelFlowRateARR ]

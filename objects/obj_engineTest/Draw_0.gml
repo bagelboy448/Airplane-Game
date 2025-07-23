@@ -21,11 +21,11 @@ var tNorm = undefined
 //draw_rectangle_color(x, y, x + TMaxX, y + sprite_height, minColor, maxColor, maxColor, minColor, false)
 //draw_rectangle_color(x + TMaxX, y, x + sprite_width, y + sprite_height, maxColor, minColor, minColor, maxColor, false)
 
-var minTemp = min(T0, T2, T3, T4, T5, T8)
-var maxTemp = max(T0, T2, T3, T4, T5, T8)
+var minTemp = min(T0, T2, T3, T4, T5, T8) - 1
+var maxTemp = max(T0, T2, T3, T4, T5, T8) + 1
 
 
-tNorm = clamp((T0 - minTemp) / (maxTemp - minTemp), 0, 1)
+tNorm = clamp((T0 - minTemp) / (maxTemp - minTemp), 0.1, 1)
 if (tNorm < 0.5) startColor = merge_color(minColor, midColor, tNorm)
 else startColor = merge_color(midColor, maxColor, tNorm)
 	
@@ -77,6 +77,8 @@ draw_rectangle_color(x + 178, y, x + sprite_width, y + sprite_height, startColor
 
 #endregion
 
+#region mask
+
 if (!surface_exists(maskSurface)) {
     maskSurface = surface_create(room_width, room_height)
 }
@@ -97,3 +99,29 @@ draw_surface(maskSurface, 0, 0)
 gpu_set_blendmode(bm_normal)
 surface_reset_target()
 draw_surface(gradientSurface, 0, 0)
+
+#endregion
+
+#region thrust graph
+
+var graphW = 512
+var graphH = 256
+var graphX = 640
+var graphY = 256
+var cushion = 5
+
+//draw_set_color(c_blue)
+//draw_rectangle(graphX, graphY, graphX + graphW, graphY + graphH, false)
+//draw_set_color(c_white)
+//draw_line(graphX, graphY, graphX, graphY + graphH)
+//draw_line(graphX, graphY + graphH, graphX + graphW, graphY + graphH)
+//draw_text(graphX, graphY + graphH, "thrust/time")
+//draw_set_color(c_yellow)
+
+multigraph_full([thrustARR, fuelFlowRateARR, RPMARR, TWorkARR, CWorkARR, NetWorkARR], 
+				graphX, graphY, graphW, graphH, cushion, c_black, 
+				[c_red, c_yellow, c_green, c_purple, c_blue, c_gray])
+
+draw_set_color(c_white)
+
+#endregion
