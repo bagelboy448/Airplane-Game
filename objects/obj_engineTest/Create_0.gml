@@ -2,11 +2,11 @@ throttle = 0
 
 P0 = 100000
 T0 = 288.15
-V0 = 1
+V0 = 0
 
 gamma = 1.4
-maxFuelFlowRate = 0.5
-fuelHeatingValue = 43000000
+maxFuelFlowRate = 4
+fuelHeatingValue = 10000
 
 inlet = {
     efficiency: 1,
@@ -15,14 +15,10 @@ inlet = {
 }
 
 compressor = {
-	efficiency: function(_rpm) {
-	    return -0.000001 * sqr(_rpm - 1000) + 1
-	},
+	efficiency: 1,
     stages: 8,
 	stagePR: 1.5,
-	CPR: function(_rpm) {
-	    return power(1.5, 8) * sqrt(_rpm) / sqrt(1000)
-	}, // power(stagePR, stages)
+	CPR: power(1.5, 8), // power(stagePR, stages)
 	workRequired: undefined
 }
 
@@ -42,9 +38,9 @@ nozzle = {
 }
 
 mainShaft = {
-    I: 100000,
+    I: 100,
 	RPM: 0,
-	slowingFactor: 0.01
+	slowingFactor: 0.0001
 }
 
 gradientSurface = undefined

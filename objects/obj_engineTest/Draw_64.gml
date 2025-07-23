@@ -5,7 +5,7 @@ draw_text(0, 45, "compressor work " + string(-compressor.workRequired))
 draw_text(0, 60, "turbine work " + string(turbine.workCreated))
 draw_text(0, 75, "net work " + string(turbine.workCreated - compressor.workRequired))
 draw_text(0, 90, "rpm " + string(mainShaft.RPM))
-draw_text(0, 105, "compressor efficiency " + string(compressor.efficiency(mainShaft.RPM)))
+draw_text(0, 105, "compressor efficiency " + string(compressor.efficiency))
 
 // T 0, 2, 3, 4, 5, 8
 var positionBump = 105

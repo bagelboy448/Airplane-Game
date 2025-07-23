@@ -4,18 +4,20 @@ P2 = max(P1 * inlet.efficiency, P1) // add something for spillage drag later (sh
 T2 = T0
 
 // compressor
-P3 = max(P2 * compressor.CPR(mainShaft.RPM), P2)
-T3 = max(T2 * power(compressor.CPR(mainShaft.RPM), (gamma - 1) / gamma), T2)
-compressor.workRequired = T2 * (power(compressor.CPR(mainShaft.RPM), (gamma - 1) / gamma) - 1) / min(compressor.efficiency(mainShaft.RPM), 0.5)
+P3 = (mainShaft.RPM == 0) ? P2 : P2 * compressor.CPR
+T3 = max(T2 * power(compressor.CPR, (gamma - 1) / gamma), T2)
+compressor.workRequired = T2 * (power(compressor.CPR, (gamma - 1) / gamma) - 1) * 0.000001 * sqr(mainShaft.RPM) / compressor.efficiency
 
 // burner
 P4 = P3
-M3 = 1.225 * inlet.area * max(V0, 1) // mass flow
+M3 = 1.225 * inlet.area * 0.000001 * sqrt(mainShaft.RPM) // mass flow
 fuelFlowRate = maxFuelFlowRate * throttle / 100
-T4 = T3 * (1 + (fuelFlowRate / M3) * burner.efficiency * fuelHeatingValue / (1.005 * T3)) / 1 + (fuelFlowRate / M3)
+M3 = max(M3, 2 * fuelFlowRate)
+if (M3 == 0) T4 = T3
+else T4 = T3 * (1 + ((fuelFlowRate / M3) * burner.efficiency * fuelHeatingValue) / (1.005 * T3)) / (1 + (fuelFlowRate / M3))
 
 // turbine
-P5 = min(P4 * turbine.TPR, P4)
+P5 = (mainShaft.RPM == 0) ? P4 : P4 * turbine.TPR
 T5 = T4 * power(turbine.TPR, (gamma - 1) / gamma)
 turbine.workCreated = turbine.efficiency * 1.005 * T4 * (1 - power(turbine.TPR, (gamma - 1) / gamma))
 mainShaft.RPM += (turbine.workCreated - compressor.workRequired)/mainShaft.I
