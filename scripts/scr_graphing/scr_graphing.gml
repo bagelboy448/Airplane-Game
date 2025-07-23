@@ -42,7 +42,7 @@ function multigraph(_arrs, _x, _y, _w, _h, _cushion = 0, _colors = undefined, _m
 }
 
 function multigraph_full(_arrs, _x, _y, _w, _h, _cushion = 0, _bkg = undefined, _colors = undefined, _maxValues = undefined) {
-   	var graphCutoff = array_length(_arrs) * 15
+	var graphCutoff = array_length(_arrs) * 15
 	_w -= graphCutoff
 	_h -= graphCutoff
 	
