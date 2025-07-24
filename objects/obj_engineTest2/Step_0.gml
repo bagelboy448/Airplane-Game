@@ -6,14 +6,14 @@ var MAF = compressor.MAF(RPM)
 
 #region compressor
 
-if (RPM == 0) {
+if (RPM < 0.15 * designRPM) {
     P[? 3] = P[? 2]
 	T[? 3] = T[? 2]
 	compressor.workRequired = 0
 }
 else {
     var CPR = compressor.CPR(RPM)
-	var efficiency = compressor.efficiency
+	var efficiency = compressor.efficiency(RPM)
 	P[? 3] = P[? 2] * CPR
 	T[? 3] = T[? 2] * power(CPR, gammaP)
 	compressor.workRequired = T[? 2] * (power(CPR, gammaP) - 1) / efficiency
@@ -42,6 +42,7 @@ else {
 }
 
 RPM += (60/6.283) * (turbine.workCreated - compressor.workRequired) / I
+if (RPM < 0) RPM = 0
 
 #endregion
 
@@ -64,9 +65,13 @@ thrust = MAF * (V8 - V0)
 array_push(arr.thrust, thrust)
 array_push(arr.RPM, RPM)
 array_push(arr.throttle, throttle)
+array_push(arr.turbineWork, turbine.workCreated)
+array_push(arr.compressorWork, compressor.workRequired)
 
 if (array_length(arr.thrust) > arr.dataPoints) array_delete(arr.thrust, 0, 1)
 if (array_length(arr.RPM) > arr.dataPoints) array_delete(arr.RPM, 0, 1)
 if (array_length(arr.throttle) > arr.dataPoints) array_delete(arr.throttle, 0, 1)
+if (array_length(arr.turbineWork) > arr.dataPoints) array_delete(arr.turbineWork, 0, 1)
+if (array_length(arr.compressorWork) > arr.dataPoints) array_delete(arr.compressorWork, 0, 1)
 
 #endregion

@@ -1,8 +1,8 @@
 #region parameters
 
 designRPM = 5200
-RPM = 0
-I = 1000
+RPM = 10
+I = 10000
 
 P = ds_map_create()
 T = ds_map_create()
@@ -19,7 +19,8 @@ inlet = {
 }
 
 compressor = {
-    efficiency: 1,
+	designEfficiency: 0.5,
+	a: 0.3,
     stages: 8,
 	stagePR: 1.5,
 	maxCPR: power(1.5, 8), // power(stagePR, stages)
@@ -27,6 +28,10 @@ compressor = {
 	workRequired: undefined,
 	maxMAF: 300,
 	n2: 1.3,
+}
+
+compressor.efficiency = function(_rpm) {
+    return 1 - compressor.a * power((_rpm / designRPM / compressor.designEfficiency) - 1, 2)
 }
 
 compressor.CPR = function(_rpm) {
@@ -72,13 +77,15 @@ fuelHeatingValue = 40000000
 arr = {}
 arr.dataPoints = 600
 graphW = 512
-graphH = 256
+graphH = 512
 graphX = 640
-graphY = 256
+graphY = 128
 cushion = 5
 
 arr.thrust = []
 arr.RPM = []
 arr.throttle = []
+arr.turbineWork = []
+arr.compressorWork = []
 
 #endregion
