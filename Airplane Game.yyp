@@ -39,6 +39,7 @@
     {"id":{"name":"obj_enemyPlane","path":"objects/obj_enemyPlane/obj_enemyPlane.yy",},},
     {"id":{"name":"obj_engineTest","path":"objects/obj_engineTest/obj_engineTest.yy",},},
     {"id":{"name":"obj_engineTest2","path":"objects/obj_engineTest2/obj_engineTest2.yy",},},
+    {"id":{"name":"obj_engineTest3","path":"objects/obj_engineTest3/obj_engineTest3.yy",},},
     {"id":{"name":"obj_input","path":"objects/obj_input/obj_input.yy",},},
     {"id":{"name":"obj_plane","path":"objects/obj_plane/obj_plane.yy",},},
     {"id":{"name":"obj_playerPlane","path":"objects/obj_playerPlane/obj_playerPlane.yy",},},
