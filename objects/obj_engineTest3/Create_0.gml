@@ -1,6 +1,6 @@
 RPM = 0
 V0 = 0
-P0 = 10200
+P0 = 101000
 T0 = 288
 
 P3 = P0
@@ -25,7 +25,7 @@ attackAngles = []
 airVelocities = []
 
 graphW = 512
-graphH = 512
+graphH = 256
 graphX = 640
 graphY = 128
 cushion = 5
