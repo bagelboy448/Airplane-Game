@@ -1,4 +1,4 @@
-draw_text(0, 0, "RPM " + string(RPM))
+draw_text(0, 0, "RPM " + string(RPM * 60 / (2 * pi)))
 draw_text(0, 15, "V0 " + string(V0))
 draw_text(0, 30, "V3 " + string(V3))
 draw_text(0, 45, "P3 " + string(P3))
