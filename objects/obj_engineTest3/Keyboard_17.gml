@@ -1,0 +1,1 @@
+throttle = max(--throttle, 0)

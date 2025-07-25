@@ -1,3 +1,7 @@
+throttle = 0
+maxFuelFlow = 1000
+fuelFlow = maxFuelFlow * throttle / 100
+
 RPM = 0
 V0 = 0
 P0 = 101000
@@ -19,6 +23,14 @@ compressor = {
 	    if (_a <= 20) return max(0.055 * _a, 0.01)
 		else return max(-0.22 * (_a - 20) + 1.1, 0)
 	}
+}
+
+fuel = {
+    energyValue: 30000000
+}
+fuel.efficiency = function(_AFR) {
+    if (_AFR == 0) return 0
+	else return max(1 - power(1.2, _AFR - 120) / 15, 0)
 }
 
 attackAngles = []

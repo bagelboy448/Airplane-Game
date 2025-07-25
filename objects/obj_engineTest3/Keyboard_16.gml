@@ -1,0 +1,1 @@
+throttle = min(++throttle, 100)
