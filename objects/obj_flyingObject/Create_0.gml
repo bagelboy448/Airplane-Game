@@ -1,0 +1,1 @@
+position = new Vector3(x, y, altitude)

@@ -13,7 +13,7 @@ global.gatlingGun = {
 	magazineCapacity: -1,
 	magazine: -1,
 	
-	fireDelay: 1,
+	fireDelay: 2,
 	fireSound: snd_m61VulcanShot
 }
 
@@ -28,11 +28,11 @@ global.cannon = {
 	damageSpeedMultiplier: 0.01,
 	
 	loading: true,
-	loadingDelay: 60,
-	magazineCapacity: 1,
-	magazine: 1,
+	loadingDelay: 120,
+	magazineCapacity: 3,
+	magazine: 3,
 	loadingSound: snd_autoloader,
 	
-	fireDelay: 120,
+	fireDelay: 30,
 	fireSound: snd_cannonShotEjectionPing
 }

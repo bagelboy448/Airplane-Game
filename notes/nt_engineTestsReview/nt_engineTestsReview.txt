@@ -1,0 +1,18 @@
+The engine tests were meant to model a very realistic turbojet, for the purpose of 
+later integrating it into the actual game. Tests 1 through 3 showed potential, but 
+they always seemed to have at least one critical flaw. Test 4 was a last ditch 
+effort to simplify the engine to a workable/useable state, but that failed so the
+tests were abandoned. 
+
+Ideally, each engine would model its compressor pressure ratio not with a single 
+ratio, but by actually calculating the pressure difference across each compressor
+using lift coefficients and attack angles. Somewhere in there is the potential to
+model a realistic compressor stall/surge, as well as ideal mixtures of fuel and 
+air.
+
+This failed because I ultimately don't know enough for certain to model such a 
+system. Modeling an entire jet engine is, understandably, a complex task. Also,
+I was never satisfied with anything less than a perfect model, so I kept pushing
+to make it work. Finally, the overhead required to simulate a realistic engine(s)
+is far too much to include in an actual game, at least from the way it was 
+looking.

@@ -4,9 +4,9 @@ draw_text(0, 30, "V3 " + string(V3))
 draw_text(0, 45, "P3 " + string(P3))
 draw_text(0, 60, "CPR " + string(P3 / P0))
 draw_text(0, 75, "CTR " + string(T3 / T0))
-draw_text(0, 90, "throttle " + string(throttle))
-draw_text(0, 105, "T3 " + string(T3))
-draw_text(0, 120, "T4 " + string(T4))
+//draw_text(0, 90, "throttle " + string(throttle))
+//draw_text(0, 105, "T3 " + string(T3))
+//draw_text(0, 120, "T4 " + string(T4))
 
 for (var i = 0; i < array_length(attackAngles); ++i) {
 	draw_set_color(c_white)

@@ -16,8 +16,8 @@
   "name":"obj_engineTest",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Engine Tests",
+    "path":"folders/Engine Tests.yy",
   },
   "parentObjectId":null,
   "persistent":false,

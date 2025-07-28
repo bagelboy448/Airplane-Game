@@ -1,0 +1,6 @@
+draw_text(0, 0, "RPM " + string(RPM))
+draw_text(0, 15, "V0 " + string(V0))
+draw_text(0, 30, "V3 " + string(V3))
+draw_text(0, 45, "CPR " + string(P3/P0))
+draw_text(0, 60, "CTR " + string(T3/T0))
+draw_text(0, 75, "swirl " + string(compressor.swirl))

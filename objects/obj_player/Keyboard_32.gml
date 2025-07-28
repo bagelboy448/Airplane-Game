@@ -1,0 +1,1 @@
+weapons_fire(self, weapons[0])

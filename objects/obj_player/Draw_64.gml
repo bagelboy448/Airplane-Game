@@ -1,0 +1,5 @@
+draw_text(0, 0, $"throttle {throttle}")
+draw_text(0, 15, "acceleration " + string(acceleration) + $" {acceleration.magnitude()}")
+draw_text(0, 30, "velocity " + string(velocity) + $" {velocity.magnitude()}")
+draw_text(0, 45, "position " + string(position))
+draw_text(0, 60, $"FPS {fps_real}")
