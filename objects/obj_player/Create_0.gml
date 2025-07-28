@@ -8,5 +8,5 @@ global.player = self
 
 // flightModes = "jet", "hover"
 
-weapons = [global.cannon]
+weapons = [global.gatlingGun]
 weapons_initialize(self)

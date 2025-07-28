@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_enemyBehaviors",
   "parent":{
-    "name":"Scripts",
-    "path":"folders/Scripts.yy",
+    "name":"Defunct",
+    "path":"folders/Scripts/Defunct.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_curves",
+  "%Name":"scr_dynamicDamage",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_curves",
+  "name":"scr_dynamicDamage",
   "parent":{
     "name":"Defunct",
     "path":"folders/Scripts/Defunct.yy",

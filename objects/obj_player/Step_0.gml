@@ -33,8 +33,8 @@ switch (flightMode) {
 		if (inputX != 0 || inputY != 0) {
 		    pointDirection = point_direction(0, 0, inputX, inputY)
 
-			acceleration.x += maxThrust * (throttle / 100) * dcos(pointDirection) / mass
-			acceleration.y += maxThrust * (throttle / 100) * -dsin(pointDirection) / mass
+			acceleration.x += maxThrustHover * (throttle / 100) * dcos(pointDirection) / mass
+			acceleration.y += maxThrustHover * (throttle / 100) * -dsin(pointDirection) / mass
 		}
 		
 		acceleration.x -= dragCoefficient * sqr(velocity.magnitude()) * dcos(velocity.direction()) / mass

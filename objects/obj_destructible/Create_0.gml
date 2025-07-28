@@ -6,6 +6,3 @@ surface_reset_target()
 
 destructibleSprite = image_index
 image_speed = 0
-
-//mySurface = surface_create(sprite_width, sprite_height);
-//myTempSprite = undefined

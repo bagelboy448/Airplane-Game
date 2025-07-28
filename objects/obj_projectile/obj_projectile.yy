@@ -8,8 +8,8 @@
   "name":"obj_projectile",
   "overriddenProperties":[],
   "parent":{
-    "name":"Defunct",
-    "path":"folders/Objects/Defunct.yy",
+    "name":"Objects",
+    "path":"folders/Objects.yy",
   },
   "parentObjectId":null,
   "persistent":false,

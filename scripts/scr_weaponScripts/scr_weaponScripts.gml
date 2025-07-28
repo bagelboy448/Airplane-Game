@@ -16,7 +16,7 @@ function weapons_initialize(_objectID) {
 function weapons_fire(_objectID, _struct) {
     with (_objectID) {
 	    if (weaponTimers[? _struct].fireTimer == 0 && (_struct.loading ? _struct.magazine > 0 : true)) {
-		    instance_create_depth(x, y, depth + 1, _struct.projectile, {
+		    instance_create_depth(x, y, depth - 1, _struct.projectile, {
 			    sprite_index: _struct.projectileSprite,
 				speed: _struct.projectileSpeed + velocity.magnitude() * dcos(image_angle - velocity.direction()),
 				direction: image_angle + random(_struct.projectileSpread) * choose(1, -1),
