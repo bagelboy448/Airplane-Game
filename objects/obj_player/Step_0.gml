@@ -35,10 +35,14 @@ switch (flightMode) {
 
 			acceleration.x += maxThrustHover * (throttle / 100) * dcos(pointDirection) / mass
 			acceleration.y += maxThrustHover * (throttle / 100) * -dsin(pointDirection) / mass
+			
+			acceleration.x -= dragCoefficient * sqr(velocity.magnitude()) * dcos(velocity.direction()) / mass
+			acceleration.y -= dragCoefficient * sqr(velocity.magnitude()) * -dsin(velocity.direction()) / mass
 		}
-		
-		acceleration.x -= dragCoefficient * sqr(velocity.magnitude()) * dcos(velocity.direction()) / mass
-		acceleration.y -= dragCoefficient * sqr(velocity.magnitude()) * -dsin(velocity.direction()) / mass
+		else {
+		    acceleration.x -= (dragCoefficient * sqr(velocity.magnitude()) + brakingForce) * dcos(velocity.direction()) / mass
+			acceleration.y -= (dragCoefficient * sqr(velocity.magnitude()) + brakingForce) * -dsin(velocity.direction()) / mass
+		}
 		
 		velocity.add(acceleration)
 		position.add(velocity)

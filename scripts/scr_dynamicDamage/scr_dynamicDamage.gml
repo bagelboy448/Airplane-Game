@@ -30,26 +30,36 @@ function findCollisionPoint(_object, _target) {
 
 function takeDamage(_objectID, _x, _y, _howMuch) {
     with (_objectID) {
-	    var pointX = _x - x
-	    var pointY = _y - y
+	    var w = sprite_width
+		var h = sprite_height
+		var offsetX = sprite_xoffset
+		var offsetY = sprite_yoffset
 		
+		var pointX = _x - x + offsetX
+	    var pointY = _y - y + offsetY
+		
+
 		if (!surface_exists(spriteRenderingSurface)) {
-		    spriteRenderingSurface = surface_create(sprite_width, sprite_height)
+		    spriteRenderingSurface = surface_create(w, h)
 		}
 		
+        var rotatedX = pointX * dcos(image_angle) - pointY * -dsin(image_angle)
+        var rotatedY = pointX * -dsin(image_angle) + pointY * dcos(image_angle)
+		
 		surface_set_target(spriteRenderingSurface)
-		draw_sprite_ext(sprite_index, 0, 0, 0, 1, 1, image_angle, c_white, 1)
+		draw_sprite_ext(sprite_index, 0, offsetX, offsetY, 1, 1, 0, c_white, 1)
 
 		gpu_set_blendmode(bm_subtract)
 		draw_set_color(c_white)
-		draw_circle(pointX, pointY, 3, false)
+		draw_circle(rotatedX, rotatedY, 3, false)
 		gpu_set_blendmode(bm_normal)
 		
 		surface_reset_target()
 		
 		if (sprite_exists(destructibleSprite)) sprite_delete(destructibleSprite)
-		destructibleSprite = sprite_create_from_surface(spriteRenderingSurface, 0, 0, 100, 100, false, false, 0, 0)
-		sprite_collision_mask(destructibleSprite, false, 0, 0, 0, 100, 100, bboxkind_precise, 0)
+		destructibleSprite = sprite_create_from_surface(spriteRenderingSurface, 0, 0, w, h, false, false, 0, 0)
+		sprite_collision_mask(destructibleSprite, false, 0, 0, 0, w, h, bboxkind_precise, 1)
+		sprite_set_offset(destructibleSprite, offsetX, offsetY)
 		sprite_index = destructibleSprite
 	}
 }
