@@ -43,15 +43,15 @@ function takeDamage(_objectID, _x, _y, _howMuch) {
 		    spriteRenderingSurface = surface_create(w, h)
 		}
 		
-        var rotatedX = pointX * dcos(image_angle) - pointY * -dsin(image_angle)
-        var rotatedY = pointX * -dsin(image_angle) + pointY * dcos(image_angle)
+        var rotatedX = (pointX - offsetX) * dcos(image_angle) - (pointY - offsetY) * dsin(image_angle)
+        var rotatedY = (pointX - offsetX) * dsin(image_angle) + (pointY - offsetY) * dcos(image_angle)
 		
 		surface_set_target(spriteRenderingSurface)
 		draw_sprite_ext(sprite_index, 0, offsetX, offsetY, 1, 1, 0, c_white, 1)
 
 		gpu_set_blendmode(bm_subtract)
 		draw_set_color(c_white)
-		draw_circle(rotatedX, rotatedY, 3, false)
+		draw_circle(rotatedX + offsetX, rotatedY + offsetY, 3, false)
 		gpu_set_blendmode(bm_normal)
 		
 		surface_reset_target()

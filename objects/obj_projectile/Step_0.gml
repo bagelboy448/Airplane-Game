@@ -2,11 +2,11 @@ if (place_meeting(x, y, [obj_flyingObject, obj_destructible])) {
 	
 	var target = instance_place(x, y, [obj_flyingObject, obj_destructible])
 	var targetSprite = target.sprite_index
-	target.sprite_index = target.internalSprite
+	//target.sprite_index = target.internalSprite
 	
 	if (place_meeting(x - speed * dcos(direction), y - speed * -dsin(direction), [obj_flyingObject, obj_destructible])) {
-		show_debug_message("critical hit")
-		target.sprite_index = targetSprite
+		//show_debug_message("critical hit")
+		//target.sprite_index = targetSprite
 	}
 	else {
 		target.sprite_index = targetSprite
