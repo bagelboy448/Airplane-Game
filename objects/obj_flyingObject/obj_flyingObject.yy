@@ -35,8 +35,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_plane1",
-    "path":"sprites/spr_plane1/spr_plane1.yy",
+    "name":"spr_planeTest",
+    "path":"sprites/spr_planeTest/spr_planeTest.yy",
   },
   "spriteMaskId":null,
   "visible":true,

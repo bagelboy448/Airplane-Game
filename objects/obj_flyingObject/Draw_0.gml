@@ -1,5 +1,12 @@
 draw_self()
 
+var localX = turrets.t1.x + x
+var localY = turrets.t1.y + y
+var rotatedX = localX * dcos(image_angle) - localY * dsin(image_angle)
+var rotatedY = localX * dsin(image_angle) + localY * dcos(image_angle)
+
+draw_sprite_ext(turrets.t1.sprite, 0, rotatedX, rotatedY, 1, 1, 0, c_white, 1)
+
 //if (altitude != global.player.position.z) {
     
 //	var spr = sprite_index
