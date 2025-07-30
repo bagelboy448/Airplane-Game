@@ -28,6 +28,7 @@ switch (flightMode) {
 		var mouseDir = point_direction(0, 0, mouse_x - x, mouse_y - y)
 		var crossZ = dcos(mouseDir) * dsin(image_angle) - dcos(image_angle) * dsin(mouseDir)
 		image_angle -= turnRate * crossZ
+		show_debug_message(string(turnRate * crossZ))
 		
 		var inputX = keyboard_check(ord("D")) - keyboard_check(ord("A"))
 		var inputY = keyboard_check(ord("S")) - keyboard_check(ord("W"))

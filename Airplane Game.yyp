@@ -80,6 +80,7 @@
     {"id":{"name":"spr_floor","path":"sprites/spr_floor/spr_floor.yy",},},
     {"id":{"name":"spr_plane1","path":"sprites/spr_plane1/spr_plane1.yy",},},
     {"id":{"name":"spr_plane2","path":"sprites/spr_plane2/spr_plane2.yy",},},
+    {"id":{"name":"spr_planeTest_internal","path":"sprites/spr_planeTest_internal/spr_planeTest_internal.yy",},},
     {"id":{"name":"spr_planeTest","path":"sprites/spr_planeTest/spr_planeTest.yy",},},
     {"id":{"name":"spr_turret14","path":"sprites/spr_turret14/spr_turret14.yy",},},
     {"id":{"name":"spr_turret18","path":"sprites/spr_turret18/spr_turret18.yy",},},

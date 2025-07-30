@@ -1,5 +1,15 @@
 position = new Vector2(x, y)
 
+spriteRenderingSurface = -1
+spriteInternalSurface = -1
+destructibleSprite = sprite_index
+internalSprite = spr_planeTest_internal
+turret = {
+    x: 151,
+	y: 65,
+	sprite: spr_turret14
+}
+
 turrets = {
     t1: {
 	    x: 151,

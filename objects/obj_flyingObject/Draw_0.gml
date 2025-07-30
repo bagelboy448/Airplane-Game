@@ -1,11 +1,31 @@
 draw_self()
 
-var localX = turrets.t1.x + x
-var localY = turrets.t1.y + y
-var rotatedX = localX * dcos(image_angle) - localY * dsin(image_angle)
-var rotatedY = localX * dsin(image_angle) + localY * dcos(image_angle)
+var localX = turret.x - sprite_xoffset
+var localY = turret.y - sprite_yoffset
 
-draw_sprite_ext(turrets.t1.sprite, 0, rotatedX, rotatedY, 1, 1, 0, c_white, 1)
+var rotatedX = x + localX * dcos(image_angle) - localY * -dsin(image_angle)
+var rotatedY = y + localX * -dsin(image_angle) + localY * dcos(image_angle)
+
+var turretDirection = point_direction(rotatedX, rotatedY, global.player.position.x, global.player.position.y)
+
+
+
+if (!sprite_exists(sprite_index)) sprite_index = spr_planeTest
+
+if (!surface_exists(spriteRenderingSurface)) {
+    spriteRenderingSurface = surface_create(sprite_width, sprite_height)
+}
+if (!surface_exists(spriteInternalSurface)) {
+    spriteInternalSurface = surface_create(sprite_width, sprite_height)
+	surface_set_target(spriteInternalSurface)
+	draw_sprite(spr_planeTest, 1, 0, 0)
+	surface_reset_target()
+}
+
+draw_sprite_ext(internalSprite, 0, x, y, 1, 1, image_angle, c_white, 1)
+draw_sprite_ext(sprite_index, 0, x, y, 1, 1, image_angle, c_white, 1)
+draw_sprite_ext(turret.sprite, 0, rotatedX, rotatedY, 1, 1, turretDirection, c_white, 1)
+
 
 //if (altitude != global.player.position.z) {
     
