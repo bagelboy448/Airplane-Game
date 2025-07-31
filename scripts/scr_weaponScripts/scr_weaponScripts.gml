@@ -1,6 +1,7 @@
 function weapons_initialize(_objectID) {
     with (_objectID) {
-	    weaponTimers = ds_map_create()
+		if (!variable_instance_exists(self, "weaponTimers"))
+			weaponTimers = ds_map_create()
 		if (!variable_instance_exists(self, "weapons"))
 			weapons = []
 		else
@@ -51,4 +52,24 @@ function weapons_update(_objectID, _struct) {
 		}
 		
 	}
+}
+
+function turrets_initialize(_objectID) {
+    with (_objectID) {
+	    if (!variable_instance_exists(self, "weaponTimers"))
+			weaponTimers = ds_map_create()
+		if (!variable_instance_exists(self, "turrets"))
+			turrets = []
+		else
+			for (var i = 0; i < array_length(weapons); i++) {
+				weaponTimers[? turrets[i]] = {
+				    loadTimer: 0,
+					fireTimer: 0
+				}
+			}
+	}
+}
+
+function turrets_fire(_objectID, _struct) {
+    
 }

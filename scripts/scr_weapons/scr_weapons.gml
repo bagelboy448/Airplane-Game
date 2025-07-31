@@ -12,6 +12,7 @@ global.gatlingGun = {
 	loadingDelay: 0,
 	magazineCapacity: -1,
 	magazine: -1,
+	loadingSound: undefined,
 	
 	fireDelay: 2,
 	fireSound: snd_m61VulcanShot
@@ -35,4 +36,33 @@ global.cannon = {
 	
 	fireDelay: 30,
 	fireSound: snd_cannonShotEjectionPing
+}
+
+function weapon(_base) constructor {
+    name = _base.name
+	projectile = _base.projectile
+	projectileSprite = _base.projectileSprite
+	projectileSpeed = _base.projectileSpeed
+	projectileSpread = _base.projectileSpread
+	projectileDamage = _base.projectileDamage
+	projectileDuration = _base.projectileDuration
+	damageSpeedMultiplier = _base.damageSpeedMultiplier
+	
+	loading = _base.loading
+	loadingDelay = _base.loadingDelay
+	magazineCapacity = _base.magazineCapacity
+	magazine = magazineCapacity
+	loadingSound = _base.loadingSound
+	
+	fireDelay = _base.fireDelay
+	fireSound = _base.fireSound
+}
+
+function turret(_localX, _localY, _spr, _turnRate, _base) : weapon(_base) constructor {
+    x = _localX
+	y = _localY
+	sprite = _spr
+	turnRate = _turnRate
+	
+	name += " turret"
 }
