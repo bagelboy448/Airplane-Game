@@ -10,3 +10,6 @@ draw_arrow(x, y, x + 100 * dcos(velocity.direction()), y - 100 * dsin(velocity.d
 draw_set_color(c_white)
 
 draw_self()
+for (var i = 0; i < array_length(turrets); ++i) {
+    turrets_draw(self, turrets[i])
+}

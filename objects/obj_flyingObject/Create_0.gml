@@ -1,4 +1,6 @@
 position = new Vector2(x, y)
+velocity = new Vector2()
+acceleration = new Vector2()
 
 spriteRenderingSurface = -1
 spriteInternalSurface = -1
@@ -10,25 +12,7 @@ internalSprite = spr_planeTest_internal
 //	sprite: spr_turret14
 //}
 
-//turrets = {
-//    t1: {
-//	    x: 151,
-//		y: 65,
-//		sprite: spr_turret14
-//	},
-//	t2: {
-//	    x: 155,
-//		y: 92,
-//		sprite: spr_turret18
-//	},
-//	t3: {
-//	    x: 155,
-//		y: 140,
-//		sprite: spr_turret18
-//	},
-//	t4: {
-//	    x: 150,
-//		y: 168,
-//		sprite: spr_turret14
-//	}
-//}
+turrets = []
+array_push(turrets, new turret(151, 65, spr_turret14, 1, global.gatlingGun, 100))
+
+turrets_initialize(self)

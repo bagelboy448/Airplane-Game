@@ -14,7 +14,7 @@ global.gatlingGun = {
 	magazine: -1,
 	loadingSound: undefined,
 	
-	fireDelay: 2,
+	fireDelay: 3,
 	fireSound: snd_m61VulcanShot
 }
 
@@ -58,11 +58,19 @@ function weapon(_base) constructor {
 	fireSound = _base.fireSound
 }
 
-function turret(_localX, _localY, _spr, _turnRate, _base) : weapon(_base) constructor {
+function turret(_localX, _localY, _spr, _turnRate, _baseWeapon, _range) : weapon(_baseWeapon) constructor {
     x = _localX
 	y = _localY
 	sprite = _spr
 	turnRate = _turnRate
+	angle = 0
+	targetingRadius = _range
 	
 	name += " turret"
+	
+	info = {
+	    absoluteX: x, 
+		absoluteY: y, 
+		absoluteAngle: angle
+	}
 }

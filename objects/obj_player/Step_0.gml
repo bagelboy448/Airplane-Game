@@ -64,4 +64,9 @@ switch (flightMode) {
 
 #endregion
 
-weapons_update(self, weapons[0])
+//weapons_update(self, weapons[0])
+for (var i = 0; i < array_length(turrets); ++i) {
+    turrets_update(self, turrets[i])
+	var dir = point_direction(turrets[i].info.absoluteX, turrets[i].info.absoluteY, mouse_x, mouse_y)
+	turrets[i].angle = dir - image_angle
+}

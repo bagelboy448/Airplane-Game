@@ -26,6 +26,8 @@ draw_sprite_ext(internalSprite, 0, x, y, 1, 1, image_angle, c_white, 1)
 draw_sprite_ext(sprite_index, 0, x, y, 1, 1, image_angle, c_white, 1)
 //draw_sprite_ext(turret.sprite, 0, rotatedX, rotatedY, 1, 1, turretDirection, c_white, 1)
 
+turrets_draw(self, turrets[0])
+
 
 //if (altitude != global.player.position.z) {
     
