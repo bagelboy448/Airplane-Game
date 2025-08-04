@@ -38,24 +38,24 @@ global.cannon = {
 	fireSound: snd_cannonShotEjectionPing
 }
 
-function weapon(_base) constructor {
-    name = _base.name
-	projectile = _base.projectile
-	projectileSprite = _base.projectileSprite
-	projectileSpeed = _base.projectileSpeed
-	projectileSpread = _base.projectileSpread
-	projectileDamage = _base.projectileDamage
-	projectileDuration = _base.projectileDuration
-	damageSpeedMultiplier = _base.damageSpeedMultiplier
+function weapon(_baseWeapon) constructor {
+    name = _baseWeapon.name
+	projectile = _baseWeapon.projectile
+	projectileSprite = _baseWeapon.projectileSprite
+	projectileSpeed = _baseWeapon.projectileSpeed
+	projectileSpread = _baseWeapon.projectileSpread
+	projectileDamage = _baseWeapon.projectileDamage
+	projectileDuration = _baseWeapon.projectileDuration
+	damageSpeedMultiplier = _baseWeapon.damageSpeedMultiplier
 	
-	loading = _base.loading
-	loadingDelay = _base.loadingDelay
-	magazineCapacity = _base.magazineCapacity
+	loading = _baseWeapon.loading
+	loadingDelay = _baseWeapon.loadingDelay
+	magazineCapacity = _baseWeapon.magazineCapacity
 	magazine = magazineCapacity
-	loadingSound = _base.loadingSound
+	loadingSound = _baseWeapon.loadingSound
 	
-	fireDelay = _base.fireDelay
-	fireSound = _base.fireSound
+	fireDelay = _baseWeapon.fireDelay
+	fireSound = _baseWeapon.fireSound
 }
 
 function turret(_localX, _localY, _spr, _turnRate, _baseWeapon, _range) : weapon(_baseWeapon) constructor {

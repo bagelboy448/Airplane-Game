@@ -90,6 +90,14 @@ function turrets_draw(_objectID, _struct) {
 	}
 }
 
+function turrets_turn(_objectID, _struct, _x, _y) {
+	with (_objectID) {
+	    var dir = point_direction(_struct.info.absoluteX, _struct.info.absoluteY, _x, _y)
+		var crossZ = dcos(dir) * dsin(_struct.info.absoluteAngle) - dcos(_struct.info.absoluteAngle) * dsin(dir)
+		_struct.angle -= _struct.turnRate * crossZ
+	}
+}
+
 function turrets_fire(_objectID, _struct) {
     with (_objectID) {
 	    if (weaponTimers[? _struct].fireTimer == 0 && (_struct.loading ? _struct.magazine > 0 : true)) {
