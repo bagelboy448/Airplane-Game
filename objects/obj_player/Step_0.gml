@@ -65,7 +65,5 @@ switch (flightMode) {
 #endregion
 
 //weapons_update(self, weapons[0])
-for (var i = 0; i < array_length(turrets); ++i) {
-    turrets_update(self, turrets[i])
-	turrets_turn(self, turrets[i], mouse_x, mouse_y)
-}
+turrets_update_all(self, turrets)
+turrets_turn_all(self, turrets, mouse_x, mouse_y)

@@ -40,9 +40,9 @@
   "physicsStartAwake":true,
   "properties":[
     {"$GMObjectProperty":"v1","%Name":"altitude","filters":[],"listItems":[],"multiselect":false,"name":"altitude","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":0,},
-    {"$GMObjectProperty":"v1","%Name":"mass","filters":[],"listItems":[],"multiselect":false,"name":"mass","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"10","varType":0,},
+    {"$GMObjectProperty":"v1","%Name":"mass","filters":[],"listItems":[],"multiselect":false,"name":"mass","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"100","varType":0,},
     {"$GMObjectProperty":"v1","%Name":"flightMode","filters":[],"listItems":[],"multiselect":false,"name":"flightMode","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"\"hover\"","varType":2,},
-    {"$GMObjectProperty":"v1","%Name":"dragCoefficient","filters":[],"listItems":[],"multiselect":false,"name":"dragCoefficient","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0.0075","varType":0,},
+    {"$GMObjectProperty":"v1","%Name":"dragCoefficient","filters":[],"listItems":[],"multiselect":false,"name":"dragCoefficient","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0.015","varType":0,},
     {"$GMObjectProperty":"v1","%Name":"maxThrust","filters":[],"listItems":[],"multiselect":false,"name":"maxThrust","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"5","varType":0,},
     {"$GMObjectProperty":"v1","%Name":"maxThrustHover","filters":[],"listItems":[],"multiselect":false,"name":"maxThrustHover","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"4","varType":0,},
     {"$GMObjectProperty":"v1","%Name":"throttle","filters":[],"listItems":[],"multiselect":false,"name":"throttle","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":0,},

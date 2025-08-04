@@ -1,0 +1,12 @@
+[]	Weapon tracking and targeting
+[]	Integrity and damage system
+	(When a plane takes damage, one of its systems loses some % of integrity. 
+	Systems have a % chance to experience a critical failure based on the
+	amount of missing integrity. The type of critical failure is based on the
+	system and what kind of damage it took.)
+[]	Enemy combatants and AI
+[]	Enemy formations
+[]	Fuel and ammo systems
+[]	Weapon heat
+[]	New weapons: laser, misiles, railgun
+[]	Improve jet mode controls (turning should be limited to a maximum)

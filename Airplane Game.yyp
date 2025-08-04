@@ -38,6 +38,7 @@
   },
   "name":"Airplane Game",
   "resources":[
+    {"id":{"name":"note_to_do","path":"notes/note_to_do/note_to_do.yy",},},
     {"id":{"name":"nt_engineTestsReview","path":"notes/nt_engineTestsReview/nt_engineTestsReview.yy",},},
     {"id":{"name":"obj_autographer","path":"objects/obj_autographer/obj_autographer.yy",},},
     {"id":{"name":"obj_blurTest","path":"objects/obj_blurTest/obj_blurTest.yy",},},
@@ -68,6 +69,7 @@
     {"id":{"name":"snd_autoloader","path":"sounds/snd_autoloader/snd_autoloader.yy",},},
     {"id":{"name":"snd_cannonShotEjectionPing","path":"sounds/snd_cannonShotEjectionPing/snd_cannonShotEjectionPing.yy",},},
     {"id":{"name":"snd_m61VulcanShot","path":"sounds/snd_m61VulcanShot/snd_m61VulcanShot.yy",},},
+    {"id":{"name":"basic_jet","path":"sprites/basic_jet/basic_jet.yy",},},
     {"id":{"name":"brayton_cycle","path":"sprites/brayton_cycle/brayton_cycle.yy",},},
     {"id":{"name":"jet_thrust_equation","path":"sprites/jet_thrust_equation/jet_thrust_equation.yy",},},
     {"id":{"name":"mt_rainier","path":"sprites/mt_rainier/mt_rainier.yy",},},

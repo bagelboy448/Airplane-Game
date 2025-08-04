@@ -14,7 +14,7 @@ global.gatlingGun = {
 	magazine: -1,
 	loadingSound: undefined,
 	
-	fireDelay: 3,
+	fireDelay: 2,
 	fireSound: snd_m61VulcanShot
 }
 
