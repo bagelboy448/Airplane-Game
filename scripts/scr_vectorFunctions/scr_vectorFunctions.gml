@@ -20,6 +20,11 @@ function Vector2(_x = 0, _y = 0) constructor {
 	    y += _vec2.y
 	}
 	
+	subtract = function(_vec2) {
+		x -= _vec2.x
+	    y -= _vec2.y		
+	}
+	
 	dotProduct = function(_vec2) {
 	    return x * _vec2.x + y * _vec2.y
 	}
@@ -33,5 +38,4 @@ function Vector3(_x = 0, _y = 0, _z = 0) constructor {
     x = _x
 	y = _y
 	z = _z
-
 }

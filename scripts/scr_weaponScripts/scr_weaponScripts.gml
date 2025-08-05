@@ -96,17 +96,29 @@ function turrets_draw_all(_objectID, _array) {
 	}
 }
 
-function turrets_turn(_objectID, _struct, _x, _y) {
+function turrets_turn(_objectID, _struct, _x, _y, _smooth = true) {
 	with (_objectID) {
 	    var dir = point_direction(_struct.info.absoluteX, _struct.info.absoluteY, _x, _y)
 		var crossZ = dcos(dir) * dsin(_struct.info.absoluteAngle) - dcos(_struct.info.absoluteAngle) * dsin(dir)
-		_struct.angle -= _struct.turnRate * crossZ
+		if (_smooth) {
+			if (dcos(dir) * dcos(_struct.info.absoluteAngle) + dsin(_struct.info.absoluteAngle) * dsin(dir) <= 0)
+				_struct.angle -= _struct.turnRate * (crossZ / abs(crossZ))
+			else
+				_struct.angle -= _struct.turnRate * crossZ
+		}
+		else {
+			//if (crossZ != 0)
+			//	_struct.angle -= _struct.turnRate * (crossZ / abs(crossZ))
+			//if (_struct.angle - dir < _struct.turnRate + 1 || _struct.angle - dir > 360 - _struct.turnRate - 1)
+			//	_struct.angle = dir
+			_struct.angle = dir
+		}
 	}
 }
 
-function turrets_turn_all(_objectID, _array, _x, _y) {
+function turrets_turn_all(_objectID, _array, _x, _y, _smooth = true) {
     for (var i = 0; i < array_length(_array); ++i) {
-	    turrets_turn(_objectID, _array[i], _x, _y)
+	    turrets_turn(_objectID, _array[i], _x, _y, _smooth)
 	}
 }
 

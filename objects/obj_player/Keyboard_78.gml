@@ -1,0 +1,2 @@
+var targetPosition = targeting_predictPosition(self, global.clickedObject, global.gatlingGun)
+if (targetPosition != undefined) turrets_turn_all(self, turrets, targetPosition.x, targetPosition.y)

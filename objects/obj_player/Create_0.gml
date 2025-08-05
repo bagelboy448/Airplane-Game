@@ -8,9 +8,9 @@ global.player = self
 
 // flightModes = "jet", "hover"
 
-//weapons = []
-//array_push(weapons, new weapon(global.gatlingGun))
-//weapons_initialize(self)
+weapons = []
+array_push(weapons, new weapon(global.gatlingGun))
+weapons_initialize(self)
 
 turrets = []
 array_push(turrets, new turret(151, 65, spr_turret14, 10, global.gatlingGun, 300))
