@@ -3,7 +3,7 @@ global.gatlingGun = {
 	projectile: obj_projectile,
 	projectileSprite: spr_bullet,
 	projectileSpeed: 10,
-	projectileSpread: 1,
+	projectileSpread: 0.5,
 	projectileDamage: 1,
 	projectileDuration: 300,
 	damageSpeedMultiplier: 0.01,
@@ -56,6 +56,21 @@ function weapon(_baseWeapon) constructor {
 	
 	fireDelay = _baseWeapon.fireDelay
 	fireSound = _baseWeapon.fireSound
+}
+
+function gimbalWeapon(_localX, _localY, _turnRate, _baseWeapon)  : weapon(_baseWeapon) constructor {
+	x = _localX
+	y = _localY
+	turnRate = _turnRate
+	angle = 0
+	
+	name += " gimbal"
+	
+	info = {
+		absoluteX: x, 
+		absoluteY: y, 
+		absoluteAngle: angle
+	}
 }
 
 function turret(_localX, _localY, _spr, _turnRate, _baseWeapon, _range) : weapon(_baseWeapon) constructor {
