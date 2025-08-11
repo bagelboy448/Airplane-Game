@@ -55,8 +55,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_planeTest",
-    "path":"sprites/spr_planeTest/spr_planeTest.yy",
+    "name":"basic_jet",
+    "path":"sprites/basic_jet/basic_jet.yy",
   },
   "spriteMaskId":null,
   "visible":true,

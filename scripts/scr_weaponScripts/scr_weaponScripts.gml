@@ -100,10 +100,6 @@ function turrets_turn(_objectID, _struct, _x, _y, _smooth = true) {
 	with (_objectID) {
 	    var dir = point_direction(_struct.info.absoluteX, _struct.info.absoluteY, _x, _y)
 		var crossZ = dcos(dir) * dsin(_struct.info.absoluteAngle) - dcos(_struct.info.absoluteAngle) * dsin(dir)
-		//if (dcos(dir) * dcos(_struct.info.absoluteAngle) + dsin(_struct.info.absoluteAngle) * dsin(dir) <= 0)
-		//	_struct.angle -= _struct.turnRate * (crossZ / abs(crossZ))
-		//else
-		//	_struct.angle -= _struct.turnRate * crossZ
 		if (_smooth) {
 			if (abs(angle_difference(dir, _struct.info.absoluteAngle)) > 90)
 				_struct.angle -= _struct.turnRate * sign(crossZ)

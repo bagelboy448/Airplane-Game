@@ -60,6 +60,7 @@
     {"id":{"name":"scr_dynamicDamage","path":"scripts/scr_dynamicDamage/scr_dynamicDamage.yy",},},
     {"id":{"name":"scr_enemyBehaviors","path":"scripts/scr_enemyBehaviors/scr_enemyBehaviors.yy",},},
     {"id":{"name":"scr_graphing","path":"scripts/scr_graphing/scr_graphing.yy",},},
+    {"id":{"name":"scr_movement","path":"scripts/scr_movement/scr_movement.yy",},},
     {"id":{"name":"scr_targeting","path":"scripts/scr_targeting/scr_targeting.yy",},},
     {"id":{"name":"scr_theaters","path":"scripts/scr_theaters/scr_theaters.yy",},},
     {"id":{"name":"scr_vectorFunctions","path":"scripts/scr_vectorFunctions/scr_vectorFunctions.yy",},},
