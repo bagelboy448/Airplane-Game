@@ -50,6 +50,7 @@
     {"$GMObjectProperty":"v1","%Name":"turnRate","filters":[],"listItems":[],"multiselect":false,"name":"turnRate","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"1","varType":0,},
     {"$GMObjectProperty":"v1","%Name":"pointDirection","filters":[],"listItems":[],"multiselect":false,"name":"pointDirection","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":0,},
     {"$GMObjectProperty":"v1","%Name":"brakingForce","filters":[],"listItems":[],"multiselect":false,"name":"brakingForce","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0.5","varType":0,},
+    {"$GMObjectProperty":"v1","%Name":"maxTurnAngle","filters":[],"listItems":[],"multiselect":false,"name":"maxTurnAngle","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"25","varType":0,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

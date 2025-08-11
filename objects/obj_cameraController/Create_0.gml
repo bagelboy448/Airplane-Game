@@ -1,8 +1,8 @@
 global.playerCamera = {}
 global.playerCamera.id = self
 
-viewWidth = 960
-viewHeight = 540
+viewWidth = 1440
+viewHeight = 810
 scale = 1
 smoothness = 0.25
 

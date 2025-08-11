@@ -70,3 +70,5 @@ movement_flightModes(self, "jet", true)
 //turrets_update_all(self, turrets)
 //if (!keyboard_check(ord("N")))
 //	turrets_turn_all(self, turrets, mouse_x, mouse_y, false)
+
+global.player.position = position

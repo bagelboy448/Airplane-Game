@@ -1,13 +1,24 @@
-function movement_directionRotate(_objectID, _mode, _dir) {
+function movement_rotate(_objectID, _dir) {
     with (_objectID) {
-	    if (!variable_instance_exists(self, "pointing"))
+		 if (!variable_instance_exists(self, "pointing"))
+		    pointing = new Vector2()
+		var pointDir = pointing.direction()
+		
+		if (abs(angle_difference(pointDir, image_angle)) < maxTurnAngle) {
+			pointDir += _dir
+			pointing.x = dcos(pointDir)
+			pointing.y = -dsin(pointDir)
+		}
+	}
+}
+
+function movement_setDirection(_objectID, _dir) {
+	with (_objectID) {
+		 if (!variable_instance_exists(self, "pointing"))
 		    pointing = new Vector2()
 			
-		var pointDir = pointing.direction()
-		var magnitude = pointing.magnitude()
-		pointDir += _dir
-		pointing.x = dcos(pointDir)
-		pointing.y = -dsin(pointDir)
+		pointing.x = dcos(_dir)
+		pointing.y = -dsin(_dir)
 	}
 }
 
@@ -61,4 +72,16 @@ function movement_flightModes(_objectID, _mode, _smoothing = true) {
 			default: break
 		}
 	}
+}
+
+function movement_AI(_objectID, _target) {
+	with (_objectID) {
+		var targetDir = point_direction(x, y, _target.x, _target.y)
+		var angleDif = angle_difference(targetDir, image_angle)
+		
+		if (abs(angleDif) > 90) throttle = max(--throttle, 0)
+		else if (abs(angleDif) < maxTurnAngle) throttle = min(++throttle, 100)
+		
+		movement_rotate(self, turnRate * sign(angleDif))
+	}	
 }
