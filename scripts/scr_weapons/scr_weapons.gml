@@ -58,18 +58,17 @@ function weapon(_baseWeapon) constructor {
 	fireSound = _baseWeapon.fireSound
 }
 
-function gimbalWeapon(_localX, _localY, _turnRate, _aimAngle, _baseWeapon)  : weapon(_baseWeapon) constructor {
+function gimbalWeapon(_localX, _localY, _maxAngle, _baseWeapon)  : weapon(_baseWeapon) constructor {
 	x = _localX
 	y = _localY
-	turnRate = _turnRate
-	aimAngle = _aimAngle
+	maxAngle = _maxAngle
 	
 	name += " gimbal"
 	
 	info = {
 		absoluteX: x, 
 		absoluteY: y, 
-		absoluteAngle: angle
+		absoluteAngle: 0
 	}
 }
 

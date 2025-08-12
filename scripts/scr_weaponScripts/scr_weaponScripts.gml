@@ -54,6 +54,73 @@ function weapons_update(_objectID, _struct) {
 	}
 }
 
+function gimbals_initialize(_objectID) {
+    with (_objectID) {
+		if (!variable_instance_exists(self, "weaponTimers"))
+			weaponTimers = ds_map_create()
+		if (!variable_instance_exists(self, "gimbals"))
+			gimbals = []
+		else
+			for (var i = 0; i < array_length(gimbals); i++) {
+				weaponTimers[? gimbals[i]] = {
+				    loadTimer: 0,
+					fireTimer: 0
+				}
+			}
+	}
+}
+
+function gimbals_update(_objectID, _struct) {
+	with (_objectID) {
+		var localX = _struct.x - sprite_xoffset
+		var localY = _struct.y - sprite_yoffset
+		
+		var cosA = dcos(image_angle)
+		var sinA = dsin(image_angle)
+		
+		var rotatedX = x + localX * cosA - localY * -sinA
+		var rotatedY = y + localX * -sinA + localY * cosA
+		var angle = image_angle
+		
+		_struct.info.absoluteX = rotatedX
+		_struct.info.absoluteY = rotatedY
+		_struct.info.absoluteAngle = angle
+		
+		weapons_update(_objectID, _struct)
+	}
+}
+
+function gimbals_update_all(_objectID, _array) {
+	for (var i = 0; i < array_length(_array); i++)
+		gimbals_update(_objectID, _array[i])
+}
+
+function gimbals_fire(_objectID, _struct, _angle = 0) {
+	with (_objectID) {
+		if (weaponTimers[? _struct].fireTimer == 0 && (_struct.loading ? _struct.magazine > 0 : true)) {
+		    instance_create_depth(_struct.info.absoluteX, _struct.info.absoluteY, depth - 1, _struct.projectile, {
+			    sprite_index: _struct.projectileSprite,
+				speed: _struct.projectileSpeed + velocity.magnitude() * dcos(image_angle - velocity.direction()),
+				direction: _struct.info.absoluteAngle + clamp(_angle, -_struct.maxAngle, _struct.maxAngle) + random(_struct.projectileSpread) * choose(1, -1),
+				damage: _struct.projectileDamage,
+				duration: _struct.projectileDuration
+			})
+			
+			if (_struct.loading)
+				_struct.magazine--
+				
+			audio_play_sound(_struct.fireSound, 0, false)
+			
+			weaponTimers[? _struct].fireTimer = _struct.fireDelay
+		}
+	}	
+}
+
+function gimbals_fire_all(_objectID, _array, _angle = 0) {
+	for (var i = 0; i < array_length(_array); i++)
+		gimbals_fire(_objectID, _array[i], _angle)
+}
+
 function turrets_initialize(_objectID) {
     with (_objectID) {
 	    if (!variable_instance_exists(self, "weaponTimers"))
@@ -91,9 +158,8 @@ function turrets_draw(_objectID, _struct) {
 }
 
 function turrets_draw_all(_objectID, _array) {
-    for (var i = 0; i < array_length(_array); ++i) {
+    for (var i = 0; i < array_length(_array); ++i)
 	    turrets_draw(_objectID, _array[i])
-	}
 }
 
 function turrets_turn(_objectID, _struct, _x, _y, _smooth = true) {

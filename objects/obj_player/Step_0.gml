@@ -67,6 +67,7 @@ movement_flightModes(self, "jet", true)
 #endregion
 
 //weapons_update(self, weapons[0])
+gimbals_update_all(self, gimbals)
 //turrets_update_all(self, turrets)
 //if (!keyboard_check(ord("N")))
 //	turrets_turn_all(self, turrets, mouse_x, mouse_y, false)
