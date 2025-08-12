@@ -72,6 +72,7 @@
     {"id":{"name":"snd_cannonShotEjectionPing","path":"sounds/snd_cannonShotEjectionPing/snd_cannonShotEjectionPing.yy",},},
     {"id":{"name":"snd_m61VulcanShot","path":"sounds/snd_m61VulcanShot/snd_m61VulcanShot.yy",},},
     {"id":{"name":"basic_jet","path":"sprites/basic_jet/basic_jet.yy",},},
+    {"id":{"name":"basic_jetScaledDown","path":"sprites/basic_jetScaledDown/basic_jetScaledDown.yy",},},
     {"id":{"name":"brayton_cycle","path":"sprites/brayton_cycle/brayton_cycle.yy",},},
     {"id":{"name":"jet_thrust_equation","path":"sprites/jet_thrust_equation/jet_thrust_equation.yy",},},
     {"id":{"name":"mt_rainier","path":"sprites/mt_rainier/mt_rainier.yy",},},

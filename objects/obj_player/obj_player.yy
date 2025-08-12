@@ -56,8 +56,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"basic_jet",
-    "path":"sprites/basic_jet/basic_jet.yy",
+    "name":"basic_jetScaledDown",
+    "path":"sprites/basic_jetScaledDown/basic_jetScaledDown.yy",
   },
   "spriteMaskId":null,
   "visible":true,
