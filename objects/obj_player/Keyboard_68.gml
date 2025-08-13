@@ -1,1 +1,1 @@
-if (flightMode != "hover") movement_rotate(self, -turnRate)
+//if (flightMode != "hover") movement_rotate(self, -turnRate)
