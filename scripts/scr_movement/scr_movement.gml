@@ -31,18 +31,20 @@ function movement_rotate(_objectID, _dir) {
 		    pointing = new Vector2()
 		var pointDir = pointing.direction()
 		
-		if (abs(angle_difference(pointDir, image_angle)) < maxTurnAngle) {
-			pointDir += _dir
-			pointing.x = dcos(pointDir)
-			pointing.y = -dsin(pointDir)
+		if (pointing.magnitude() == 0) {			
+			pointing.x = dcos(_dir)
+			pointing.y = -dsin(_dir)
+		}
+		else if (abs(angle_difference(pointDir, image_angle)) < maxTurnAngle) {
+			pointing.rotate(_dir)
 		}
 	}
 }
 
 function movement_rotate_towards_point(_objectID, _x, _y, _smooth = true) {
     with (_objectID) {
-		//if (!variable_instance_exists(self, "pointing"))
-		//	pointing = new Vector2()
+		if (!variable_instance_exists(self, "pointing"))
+			pointing = new Vector2()
 		//var pointDir = pointing.direction()
 		var aimDir = point_direction(x, y, _x, _y)
 		//var crossZ = dcos(aimDir) * dsin(pointDir) - dcos(pointDir) * dsin(aimDir)
@@ -237,32 +239,35 @@ function movement_AI(_objectID, _target, _behavior, _params = {}) {
 				
 				var targetDir = point_direction(x, y, _target.x, _target.y)
 				var angleDif = angle_difference(targetDir, image_angle)
-				
-				var chaseSpeed = 3
-				var speedDifference = _target.velocity.magnitude() - velocity.magnitude() + chaseSpeed
-				var sensitivity = 0.1
-				throttle_adjust(self, speedDifference * sensitivity)
-				
-				
 				movement_rotate(self, turnRate * sign(angleDif))
 				
+				var chaseSpeed = 3
+				var speedDif = _target.velocity.magnitude() - velocity.magnitude() + chaseSpeed
+				var sensitivity = 0.1
+				throttle_adjust(self, speedDif * sensitivity)
+
 				break
 				
 			case "followPoint":
 				
-				movement_rotate_towards_point(self, _params.x, _params.y)
+				var sensitivity = 0.1
 				
+				var targetDir = point_direction(x, y, _params.x, _params.y)
+				var angleDif = angle_difference(targetDir, pointing.direction())
+				var crossZ = dcos(targetDir) * dsin(pointing.direction()) - dcos(pointing.direction()) * dsin(targetDir)
+				if (abs(angleDif) > 90)
+					movement_rotate(self, turnRate * -sign(crossZ))
+				else
+					movement_rotate(self, turnRate * -crossZ)
+					
+				var distance = point_distance(x, y, _params.x, _params.y)
+				var interceptTime = 30
+				var targetSpeed = distance/interceptTime
+				throttle_adjust(self, (targetSpeed - velocity.magnitude()) * sensitivity)
+								
 				break
 			
 			default: break
 		}
-		
-		//var targetDir = point_direction(x, y, _target.x, _target.y)
-		//var angleDif = angle_difference(targetDir, image_angle)
-		
-		//if (abs(angleDif) > 90) throttle = max(--throttle, 0)
-		//else if (abs(angleDif) < maxTurnAngle) throttle = min(++throttle, 100)
-		
-		//movement_rotate(self, turnRate * sign(angleDif))
 	}	
 }
