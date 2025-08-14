@@ -3,4 +3,4 @@ position = new Vector2(x, y)
 velocity = new Vector2()
 acceleration = new Vector2()
 
-throttle = 10
+//throttle = 10

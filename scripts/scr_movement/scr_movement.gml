@@ -1,3 +1,30 @@
+function throttle_up(_objectID, _amount = 1) {
+	with (_objectID) {
+	    if (!variable_instance_exists(self, "throttle"))
+			throttle = 0
+		throttle += _amount
+		throttle = min(throttle, 100)
+	}
+}
+
+function throttle_down(_objectID, _amount = 1) {
+	with (_objectID) {
+	    if (!variable_instance_exists(self, "throttle"))
+			throttle = 0
+		throttle -= _amount
+		throttle = max(throttle, 0)
+	}
+}
+
+function throttle_adjust(_objectID, _amount) {
+    with (_objectID) {
+	    if (!variable_instance_exists(self, "throttle"))
+			throttle = 0
+		throttle += _amount
+		throttle = clamp(throttle, 0, 100)
+	}
+}
+
 function movement_rotate(_objectID, _dir) {
     with (_objectID) {
 		 if (!variable_instance_exists(self, "pointing"))
@@ -12,6 +39,29 @@ function movement_rotate(_objectID, _dir) {
 	}
 }
 
+function movement_rotate_towards_point(_objectID, _x, _y, _smooth = true) {
+    with (_objectID) {
+		//if (!variable_instance_exists(self, "pointing"))
+		//	pointing = new Vector2()
+		//var pointDir = pointing.direction()
+		var aimDir = point_direction(x, y, _x, _y)
+		//var crossZ = dcos(aimDir) * dsin(pointDir) - dcos(pointDir) * dsin(aimDir)
+		//if (_smooth) {
+		//    if (abs(angle_difference(aimDir, pointDir)) > 90)
+		//		pointDir -= turnRate * sign(crossZ)
+		//	else
+		//		pointDir -= turnRate * crossZ
+		//}
+		//else {
+		//    if (abs(angle_difference(aimDir, pointDir)) <= turnRate)
+		//		pointDir = aimDir
+		//	else
+		//		pointDir -= turnRate * sign(crossZ)
+		//}
+		movement_rotate(self, aimDir)
+	}
+}
+
 function movement_setDirection(_objectID, _dir) {
 	with (_objectID) {
 		 if (!variable_instance_exists(self, "pointing"))
@@ -22,7 +72,7 @@ function movement_setDirection(_objectID, _dir) {
 	}
 }
 
-function movement_flightModes(_objectID, _flightMode, _smoothing = true) {
+function movement_flightModes(_objectID, _flightMode, _smooth = true) {
     with (_objectID) {
 		if (!variable_instance_exists(self, "pointing"))
 		    pointing = new Vector2()
@@ -39,7 +89,7 @@ function movement_flightModes(_objectID, _flightMode, _smoothing = true) {
 				var pointDir = pointing.direction()
 				var crossZ = dcos(pointDir) * dsin(image_angle) - dcos(image_angle) * dsin(pointDir)
 				
-				if (_smoothing) {
+				if (_smooth) {
 				    if (abs(angle_difference(pointDir, image_angle)) > 90)
 					    image_angle -= turnRate * sign(crossZ)
 					else
@@ -157,13 +207,13 @@ function movement_playerInput(_objectID, _flightMode) {
 	}
 }
 
-function movement_playerRotation(_objectID, _flightMode, _smoothing = true) {
+function movement_playerRotation(_objectID, _flightMode, _smooth = true) {
     with (_objectID) {
 	    if (_flightMode == "hover") {
 		    var mouseDir = point_direction(x, y, mouse_x, mouse_y)
 			var crossZ = dcos(mouseDir) * dsin(image_angle) - dcos(image_angle) * dsin(mouseDir)
 				
-			if (_smoothing) {
+			if (_smooth) {
 				if (abs(angle_difference(mouseDir, image_angle)) > 90)
 					image_angle -= turnRate * sign(crossZ)
 				else
@@ -179,14 +229,40 @@ function movement_playerRotation(_objectID, _flightMode, _smoothing = true) {
 	}
 }
 
-function movement_AI(_objectID, _target) {
+function movement_AI(_objectID, _target, _behavior, _params = {}) {
 	with (_objectID) {
-		var targetDir = point_direction(x, y, _target.x, _target.y)
-		var angleDif = angle_difference(targetDir, image_angle)
 		
-		if (abs(angleDif) > 90) throttle = max(--throttle, 0)
-		else if (abs(angleDif) < maxTurnAngle) throttle = min(++throttle, 100)
+		switch (_behavior) {
+		    case "chase":
+				
+				var targetDir = point_direction(x, y, _target.x, _target.y)
+				var angleDif = angle_difference(targetDir, image_angle)
+				
+				var chaseSpeed = 3
+				var speedDifference = _target.velocity.magnitude() - velocity.magnitude() + chaseSpeed
+				var sensitivity = 0.1
+				throttle_adjust(self, speedDifference * sensitivity)
+				
+				
+				movement_rotate(self, turnRate * sign(angleDif))
+				
+				break
+				
+			case "followPoint":
+				
+				movement_rotate_towards_point(self, _params.x, _params.y)
+				
+				break
+			
+			default: break
+		}
 		
-		movement_rotate(self, turnRate * sign(angleDif))
+		//var targetDir = point_direction(x, y, _target.x, _target.y)
+		//var angleDif = angle_difference(targetDir, image_angle)
+		
+		//if (abs(angleDif) > 90) throttle = max(--throttle, 0)
+		//else if (abs(angleDif) < maxTurnAngle) throttle = min(++throttle, 100)
+		
+		//movement_rotate(self, turnRate * sign(angleDif))
 	}	
 }

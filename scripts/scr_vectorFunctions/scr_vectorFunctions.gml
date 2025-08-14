@@ -27,7 +27,7 @@ function Vector2(_x = 0, _y = 0) constructor {
 	
 	rotate = function(_angle) {
 	    var length = magnitude()
-		if (length) {
+		if (length > 0) {
 		    var dir = point_direction(0, 0, x, y)
 			dir += _angle
 			x = length * dcos(dir)
